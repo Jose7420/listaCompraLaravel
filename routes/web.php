@@ -16,6 +16,8 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'getHome']);
+
+
 // Route::get('/', function () {
 //     return view('home');
 // });
@@ -28,6 +30,10 @@ Route::get('/logout', function () {
     return  "esta es la pagina de logout";
 });
 
+Route::post('/logout', function () {
+    return  "esta es la pagina de logout";
+});
+
 Route::get('/productos',[ProductoController::class,'getIndex']);
 
 
@@ -37,5 +43,8 @@ Route::get('/productos/show/{id}',[ProductoController::class,'getShow']);
 Route::get('/productos/create', [ProductoController::class, 'getCreate']);
 
 
-Route::get('/productos/edit/{id}',[ProductosController::class, 'getEdit'] );
+Route::get('/productos/edit/{id}',[ProductoController::class, 'getEdit'] );
+Route::put('/productos/edit/{id}',[ProductoController::class, 'getEdit'] );
+
+
 
