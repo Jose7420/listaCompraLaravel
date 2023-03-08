@@ -12,6 +12,10 @@
   </head>
   <body>
     @include('partials.navbar')
+    <div class="container">
+        @yield('content')
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
