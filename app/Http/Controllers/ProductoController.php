@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Producto;
 
 
 
@@ -14,14 +16,17 @@ use Illuminate\Http\Request;
     //
 
     public function getIndex(){
+        $productos = Producto::all();
 
-        return view('productos.index',array('arrayProductos'=>self::$arrayProductos));
+        return view('productos.index',array('arrayProductos'=>$productos));
     }
 
 
     public function getShow($id){
 
-        return view('productos.show', array('producto'=>self::$arrayProductos[$id-1],'id'=>$id));
+        $producto = Producto::findOrFail($id);
+
+        return view('productos.show', array('producto'=>$producto));
     }
 
     public function getCreate(){
@@ -29,8 +34,9 @@ use Illuminate\Http\Request;
     }
 
     public function getEdit($id){
+        $producto = Producto::findOrFail($id);
 
-        return view('productos.edit', array('producto'=>self::$arrayProductos[$id-1],'id'=>$id));
+        return view('productos.edit', array('producto'=>$producto));
 
     }
 
