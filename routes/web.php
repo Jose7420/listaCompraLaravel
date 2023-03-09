@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,36 +13,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'getHome']);
-
-
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-Route::get('/login', function () {
-    return view('auth/login');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/logout', function () {
-    return  "esta es la pagina de logout";
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::post('/logout', function () {
-    return  "esta es la pagina de logout";
-});
-
-Route::get('/productos',[ProductoController::class,'getIndex']);
-
-
-Route::get('/productos/show/{id}',[ProductoController::class,'getShow']);
-
-
-Route::get('/productos/create', [ProductoController::class, 'getCreate']);
-
-
-Route::get('/productos/edit/{id}',[ProductoController::class, 'getEdit'] );
-Route::put('/productos/edit/{id}',[ProductoController::class, 'getEdit'] );
-
-
-
+require __DIR__.'/auth.php';

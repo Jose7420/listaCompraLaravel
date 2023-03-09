@@ -11,7 +11,10 @@
           <div class="card-body" style="padding:30px">
 
              {{-- TODO: Abrir el formulario e indicar el método POST --}}
+             <form action="{{ url('/productos/create/') }}" method="POST">
 
+                {{ method_field('PUT') }}
+                @csrf
              {{-- TODO: Protección contra CSRF --}}
 
              <div class="form-group">
@@ -49,6 +52,7 @@
              </div>
 
              {{-- TODO: Cerrar formulario --}}
+             </form>
 
           </div>
        </div>
