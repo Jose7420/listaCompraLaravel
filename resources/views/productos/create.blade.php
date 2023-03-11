@@ -13,7 +13,7 @@
              {{-- TODO: Abrir el formulario e indicar el método POST --}}
              <form action="{{ url('/productos/create/') }}" method="POST">
 
-                {{ method_field('PUT') }}
+                {{ method_field('POST') }}
                 @csrf
              {{-- TODO: Protección contra CSRF --}}
 
@@ -24,7 +24,7 @@
 
              <div class="form-group">
                 {{-- TODO: Completa el input para el año --}}
-                <label for="precio">Nombre</label>
+                <label for="precio">Precio</label>
                 <input type="number" name="precio" id="precio" class="form-control">
              </div>
 

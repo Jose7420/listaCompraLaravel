@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+Route::group( ['middleware' => 'auth'],function () {
+
+
+    Route::get('/productos/show/{id}',[ProductoController::class,'getShow']);
+    Route::get('/productos/create', [ProductoController::class, 'getCreate']);
+    Route::post('/productos/create', [ProductoController::class, 'postCreate']);
+    Route::get('/productos/edit/{id}',[ProductoController::class, 'getEdit']);
+    Route::put('/productos/edit/{request}',[ProductoController::class, 'putEdit']);
+
+
+
+});
+Route::get('/productos',[ProductoController::class,'getIndex']);
+
+Route::get('/', [HomeController::class, 'getHome']);
