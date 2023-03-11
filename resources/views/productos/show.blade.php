@@ -19,13 +19,19 @@
                 <h4>Precio: {{$producto->precio}}</h4>
 
                 @if($producto->pendiente==false)
-                    <button type="submit" class="btn btn-danger" style="padding:8px 100px;margin-top:25px;">
+                    <button type="submit" class="btn btn-danger" style="padding:8px 50px;margin-top:25px;">
                     Comprar
                 </button>
                 @else
                     <h4>Comprado</h4>
 
                 @endif
+                <a type="button" class="btn btn-warning"  href="{{ url('/productos/edit/' . $producto->id ) }}" style="padding:8px 50px;margin-top:25px;">
+                    Editar
+                </a>
+                <a type="button" class="btn btn-primary" href="{{url('/productos')}}" style="padding:8px 50px;margin-top:25px;">
+                    Volver al listado
+                </a>
 
 
             </div>

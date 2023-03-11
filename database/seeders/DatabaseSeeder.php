@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Producto;
+use App\Models\User;
+
 use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +23,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         self::seedProductos();
         $this->command->info('Tabla productos inicializada con datos!');
+
+        self::seedUsers();
+        $this->command->info('Tabla usuarios inicializada con datos!');
     }
 
     private static function seedProductos(){
@@ -37,6 +42,30 @@ class DatabaseSeeder extends Seeder
             ]);
 
         }
+
+
+    }
+
+    private static function seedUsers() {
+
+        User::truncate();
+
+        DB::table('users')->insert([
+            'name'=>"jose",
+            'email'=>"jose@gmail.com",
+            'password'=>bcrypt('password'),
+            'nombre'=>"jose",
+            'apellido'=>"Martinez",
+        ]);
+
+        DB::table('users')->insert([
+            'name'=>"juan",
+            'email'=>"juan@gmail.com",
+            'password'=>bcrypt('password'),
+            'nombre'=>"juan",
+            'apellido'=>"Rodiguez",
+        ]);
+
 
 
     }

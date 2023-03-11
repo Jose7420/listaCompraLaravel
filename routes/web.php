@@ -15,36 +15,27 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'getHome']);
-
-
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-Route::get('/login', function () {
-    return view('auth/login');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/logout', function () {
-    return  "esta es la pagina de logout";
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::post('/logout', function () {
-    return  "esta es la pagina de logout";
-});
+require __DIR__.'/auth.php';
+Route::group( ['middleware' => 'auth'],function () {
 
+
+    Route::get('/productos/show/{id}',[ProductoController::class,'getShow']);
+    Route::get('/productos/create', [ProductoController::class, 'getCreate']);
+    Route::post('/productos/create', [ProductoController::class, 'postCreate']);
+    Route::get('/productos/edit/{id}',[ProductoController::class, 'getEdit']);
+    Route::put('/productos/edit/{request}',[ProductoController::class, 'putEdit']);
+
+
+
+});
 Route::get('/productos',[ProductoController::class,'getIndex']);
 
-
-Route::get('/productos/show/{id}',[ProductoController::class,'getShow']);
-
-
-Route::get('/productos/create', [ProductoController::class, 'getCreate']);
-
-
-Route::get('/productos/edit/{id}',[ProductoController::class, 'getEdit'] );
-Route::put('/productos/edit/{id}',[ProductoController::class, 'getEdit'] );
-
-
-
+Route::get('/', [HomeController::class, 'getHome']);
