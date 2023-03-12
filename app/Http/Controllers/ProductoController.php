@@ -63,7 +63,23 @@ use App\Models\Producto;
         $producto->nombre = $request->input('nombre');
         $producto->precio = $request->input('precio');
         $producto->categoria = $request->input('categoria');
+        $producto->descripcion= $request->input('descripcion');
         $producto->imagen = $request->input('imagen');
+        $producto->save();
+
+        $url = action([ProductoController::class, 'getShow'],['id' =>$id]);
+        return redirect($url);
+
+
+
+    }
+
+    public function putComprar(Request $request, $id){
+
+
+        $producto = Producto::findOrFail($id);
+
+        $producto->pendiente = $request->input('comprar');
         $producto->save();
 
         $url = action([ProductoController::class, 'getShow'],['id' =>$id]);

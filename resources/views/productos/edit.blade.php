@@ -46,7 +46,7 @@
 
                         <div class="form-group">
                             <label for="synopsis">Descripción</label>
-                            <textarea name="descripcion" id="descripcion" class="form-control" rows="3"></textarea>
+                            <textarea placeholder="{{$producto->descripcion}}" name="descripcion" id="descripcion" class="form-control" rows="3"></textarea>
                         </div>
 
                         <div class="form-group text-center">
