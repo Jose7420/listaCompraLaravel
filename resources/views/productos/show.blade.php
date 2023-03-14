@@ -26,7 +26,7 @@
 
                 @if ($producto->pendiente == false)
                     <h5><strong>Estado: </strong> Producto Actualmente no comprado</h5>
-                    <input hidden="true" value="1" name="comprar" />
+                    <input hidden="true" value="auth()->id()" name="usuario_conectado" />
                     <button type="submmit" class="btn btn-danger" style="padding:8px 50px;margin-top:25px;">
                         Comprar
                     </button>

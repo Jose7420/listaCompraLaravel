@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\ProductoUser;
 
 
 
@@ -83,11 +84,18 @@ use App\Models\Producto;
 
     public function putComprar(Request $request, $id){
 
+        $productoNuevo = new ProductoUser();
 
-        $producto = Producto::findOrFail($id);
+        $productoNuevo->producto_id = $id;
+        $productoNuevo->user_id = "1";
 
-        $producto->pendiente = $request->input('comprar');
-        $producto->save();
+        $productoNuevo->save();
+
+
+        // $producto = Producto::findOrFail($id);
+
+        // $producto->pendiente = $request->input('comprar');
+        // $producto->save();
 
         $url = action([ProductoController::class, 'getShow'],['id' =>$id]);
         return redirect($url);
