@@ -15,9 +15,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -40,5 +40,7 @@ Route::group( ['middleware' => 'auth'],function () {
 
 });
 Route::get('/productos',[ProductoController::class,'getIndex']);
+Route::get('/productos/categoria/{categoria}',[ProductoController::class,'getCategoria']);
+
 
 Route::get('/', [HomeController::class, 'getHome']);
