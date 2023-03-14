@@ -16,7 +16,7 @@
             {{-- TODO: Datos del producto --}}
             <h2><strong> {{$producto->nombre}} </strong> </h2>
             <h5><strong>Precio:</strong> {{ $producto->precio }}</h5>
-            <h5><strong> Categoria: </strong>{{ $producto->categoria }}</h5>
+            <h5><a href="{{ url('/productos/categoria/'.$producto->categoria)}}"> Categoria: <strong> Categoria: </strong>{{ $producto->categoria }}</a></h5>
 
             <h5><strong> Descripción:</strong> {{$producto->descripcion}}</h5>
 

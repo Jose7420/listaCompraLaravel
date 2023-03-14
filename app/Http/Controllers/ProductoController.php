@@ -16,10 +16,17 @@ use App\Models\Producto;
     //
 
     public function getIndex(){
-        $productos = Producto::all();
 
+        $productos = Producto::all();
         return view('productos.index',array('arrayProductos'=>$productos));
     }
+
+    public function getCategoria($categoria){
+
+        $productos = Producto::where('categoria','like',($categoria))->get();
+        return view('productos.index',array('arrayProductos'=>$productos));
+    }
+
 
 
     public function getShow($id){
